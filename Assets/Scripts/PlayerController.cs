@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
 
+    // Gives player powerup of player touches powerup
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    // Adds force if player collides with enemy
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Turns has powerup to false after 7 seconds and deactivates powerupIndicator
     IEnumerator PowerupCountdownRoutine()
     {
         yield return new WaitForSeconds(7);
