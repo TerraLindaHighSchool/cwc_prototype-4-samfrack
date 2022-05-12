@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4428908044626120, guid: 923deea38dc6a8843b15db7638919c1e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4428908044626120, guid: 923deea38dc6a8843b15db7638919c1e, type: 3}
       propertyPath: m_LocalScale.x
@@ -764,7 +764,7 @@ MonoBehaviour:
     type: 3}
   enemyCount: 0
   waveNumber: 1
-  powerupPrefab: {fileID: 4061850015904677342, guid: 989fb02635d735742a52b4e80abae6e2,
+  powerupPrefab: {fileID: 8537687350735977507, guid: eabf5dc326d30ab4e976522f6ffe054b,
     type: 3}
 --- !u!4 &1778785392
 Transform:
@@ -778,7 +778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910207016 stripped
 GameObject:

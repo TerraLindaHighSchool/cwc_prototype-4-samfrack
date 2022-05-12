@@ -28,6 +28,8 @@ public class SpawnManager : MonoBehaviour
             Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         }
     }
+
+    // Generates a random spawn position
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -36,6 +38,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
+    // Increased amount of enemies to be spawned by one
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         for (int i = 0; i<enemiesToSpawn; i++)
