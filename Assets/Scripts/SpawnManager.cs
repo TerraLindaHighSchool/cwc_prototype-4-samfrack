@@ -4,47 +4,30 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    private float spawnRange = 9;
-    public int enemyCount;
-    public int waveNumber = 1;
+    private float powerupSpawnRange = 34;
     public GameObject powerupPrefab;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        SpawnEnemyWave(waveNumber);
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        Instantiate(powerupPrefab, GeneratePowerupSpawnPosition(), powerupPrefab.transform.rotation);
+    }
+    public void SpawnPowerup()
+    {
+        Instantiate(powerupPrefab, GeneratePowerupSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemyCount = FindObjectsOfType<Enemy>().Length;
-        if (enemyCount == 0)
-        {
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-        }
+        
     }
-
-    // Generates a random spawn position
-    private Vector3 GenerateSpawnPosition()
+    
+    private Vector3 GeneratePowerupSpawnPosition()
     {
-        float spawnPosX = Random.Range(-spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        float spawnPosX = Random.Range(-powerupSpawnRange, powerupSpawnRange);
+        float spawnPosZ = 15;
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
         return randomPos;
-    }
-
-    // Increased amount of enemies to be spawned by one
-    void SpawnEnemyWave(int enemiesToSpawn)
-    {
-        for (int i = 0; i<enemiesToSpawn; i++)
-        {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-        }
-       
-    }
+    }    
 }
