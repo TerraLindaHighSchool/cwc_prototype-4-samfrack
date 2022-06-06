@@ -5,8 +5,10 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public GameObject player;
+    public GameObject ballPrefab;
     public int score;
     public SpawnDefender spawnDefender;
+    public SpawnManager spawnManager;
     public bool hasScored;
     private float playerHeight = 0.5f;
 
@@ -22,7 +24,6 @@ public class Score : MonoBehaviour
         Debug.Log("Entering trigger");
         if (other.gameObject.CompareTag("Goal"))
         {
-
             score++;
             Destroy(gameObject);
             spawnDefender.spawn(score);
@@ -30,6 +31,8 @@ public class Score : MonoBehaviour
             {
                 Destroy(enemy);
             }
+            spawnManager.spawnPowerup; 
+            Instantiate(ballPrefab, new Vector3(0, 0.5f, 0) , ballPrefab.transform.rotation);
             player.transform.position = new Vector3(0, playerHeight, 36);
             Debug.Log(score);
         }

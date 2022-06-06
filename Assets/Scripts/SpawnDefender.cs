@@ -21,7 +21,7 @@ public class SpawnDefender : MonoBehaviour
 
     public void spawn(int score)
     {
-        for (int i = 0; i < score; i++)
+        for (int i = 0; i <= score; i++)
         {
             Instantiate(enemyPrefab, GenerateDefenderSpawnPosition(), enemyPrefab.transform.rotation);
         }

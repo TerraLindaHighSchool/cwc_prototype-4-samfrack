@@ -13,13 +13,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
+        soccerBall = GameObject.Find("Soccer Ball");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveDir = (soccerBall.transform.position - transform.position).normalized;
+        enemyRb.AddForce((soccerBall.transform.position - transform.position).normalized * speed); 
 
         if (transform.position.y < -10)
         {

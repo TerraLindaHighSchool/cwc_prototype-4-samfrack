@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private float powerupSpawnRange = 34;
+    private float powerupSpawnRange = 5;
     public GameObject powerupPrefab;
 
     // Start is called before the first frame update
@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     public void SpawnPowerup()
     {
         Instantiate(powerupPrefab, GeneratePowerupSpawnPosition(), powerupPrefab.transform.rotation);
+        
     }
 
     // Update is called once per frame

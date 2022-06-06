@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody playerrb;
+    private Rigidbody ballrb;
     private float horizontalInput;
     private float forwardInput;
     private float turnSpeed = 45.0f;
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     // Instantiates Rigidbody 
     void Start()
     {
-        playerrb = GetComponent<Rigidbody>();
+        ballrb = GetComponent<Rigidbody>();
     }
 
     // Moves player forward based off vertical input buttons
@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
     // Adds force if player collides with enemy
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
+        if (collision.gameObject.CompareTag("Soccer Ball") && hasPowerup)
         {
-            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Rigidbody ballRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
             Debug.Log("Collide with" + collision.gameObject.name + " with powerup set to " + hasPowerup);
-            enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
+            ballRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
         }
     }
 
