@@ -6,6 +6,7 @@ public class Score : MonoBehaviour
 {
     public GameObject player;
     public GameObject ballPrefab;
+    public GameObject powerUpPrefab;
     public int score;
     public SpawnDefender spawnDefender;
     public SpawnManager spawnManager;
@@ -19,7 +20,7 @@ public class Score : MonoBehaviour
         score = 0;
     }
 
-    void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Entering trigger");
         if (other.gameObject.CompareTag("Goal"))
@@ -31,10 +32,16 @@ public class Score : MonoBehaviour
             {
                 Destroy(enemy);
             }
-            spawnManager.spawnPowerup; 
+            Destroy(powerUpPrefab);
+            ScoreRoutine();
             Instantiate(ballPrefab, new Vector3(0, 0.5f, 0) , ballPrefab.transform.rotation);
             player.transform.position = new Vector3(0, playerHeight, 36);
             Debug.Log(score);
         }
+    }
+
+    private void ScoreRoutine()
+    {
+        spawnManager.SpawnPowerup();
     }
 }

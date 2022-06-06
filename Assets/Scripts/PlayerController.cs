@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     // Turns has powerup to false after 7 seconds and deactivates powerupIndicator
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(3);
         hasPowerup = false;
         powerupIndicator.gameObject.SetActive(false);
     }
