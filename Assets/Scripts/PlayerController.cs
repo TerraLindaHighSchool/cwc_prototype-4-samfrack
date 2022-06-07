@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeed = 45.0f;
     public float speed = 45.0f;
     public bool hasPowerup;
+    public bool hasNotTouchedSoccerball;
     private float powerUpStrength = 15.0f;
     public GameObject powerupIndicator;
     
@@ -39,27 +40,29 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
-            powerupIndicator.gameObject.SetActive(true); 
+            powerupIndicator.gameObject.SetActive(true);
+            hasNotTouchedSoccerball = true;
         }
     }
     
     // Adds force if player collides with enemy
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Soccer Ball") && hasPowerup)
+        if (collision.gameObject.CompareTag("Soccer Ball") && hasPowerup && hasNotTouchedSoccerball)
         {
             Rigidbody ballRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
             Debug.Log("Collide with" + collision.gameObject.name + " with powerup set to " + hasPowerup);
             ballRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
+            hasNotTouchedSoccerball = false; 
         }
     }
 
     // Turns has powerup to false after 7 seconds and deactivates powerupIndicator
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         hasPowerup = false;
         powerupIndicator.gameObject.SetActive(false);
     }

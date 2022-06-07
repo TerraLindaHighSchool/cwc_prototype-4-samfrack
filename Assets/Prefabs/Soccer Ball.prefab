@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5933912473127193447}
   m_Layer: 0
   m_Name: Soccer Ball
-  m_TagString: Untagged
+  m_TagString: Soccer Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 0
 --- !u!114 &5933912473127193447
 MonoBehaviour:
@@ -123,8 +123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7bcbc818736b14b8c18160dff97423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soccerBall: {fileID: 5933912473127193449}
   player: {fileID: 0}
+  ballPrefab: {fileID: 5933912473127193449}
+  powerUpPrefab: {fileID: 8537687350735977507, guid: eabf5dc326d30ab4e976522f6ffe054b,
+    type: 3}
   score: 0
-  spawnDefender: {fileID: 0}
+  spawnManager: {fileID: 0}
   hasScored: 0
+  enemyPrefab: {fileID: 2517131179789323328, guid: e88f7abdb2c8aee4eab0df9215728495,
+    type: 3}
+  waveNumber: 1
+  enemyCount: 0

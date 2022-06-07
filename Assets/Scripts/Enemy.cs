@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour
     {
         enemyRb.AddForce((soccerBall.transform.position - transform.position).normalized * speed); 
 
-        if (transform.position.y < -10)
-        {
-            Debug.Log(transform.position);
-            Destroy(gameObject);
-        }
+        //if (transform.position.y < -10)
+        //{
+           // Debug.Log(transform.position);
+           // Destroy(gameObject);
+       // }
     }
 }
