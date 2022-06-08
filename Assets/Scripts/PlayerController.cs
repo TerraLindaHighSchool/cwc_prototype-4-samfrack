@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ballrb = GetComponent<Rigidbody>();
+        hasNotTouchedSoccerball = false; 
     }
 
     // Moves player forward based off vertical input buttons
@@ -33,13 +34,14 @@ public class PlayerController : MonoBehaviour
     }
 
     //Gives player powerup of player touches powerup
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
+            Debug.Log(hasPowerup);
             Destroy(other.gameObject);
-            StartCoroutine(PowerupCountdownRoutine());
+            //StartCoroutine(PowerupCountdownRoutine());
             powerupIndicator.gameObject.SetActive(true);
             hasNotTouchedSoccerball = true;
         }
@@ -60,10 +62,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Turns has powerup to false after 7 seconds and deactivates powerupIndicator
-    IEnumerator PowerupCountdownRoutine()
-    {
-        yield return new WaitForSeconds(4);
-        hasPowerup = false;
-        powerupIndicator.gameObject.SetActive(false);
-    }
+    //IEnumerator PowerupCountdownRoutine()
+    //{
+        //yield return new WaitForSeconds(4);
+        //hasPowerup = false;
+        //powerupIndicator.gameObject.SetActive(false);
+    //}
 }

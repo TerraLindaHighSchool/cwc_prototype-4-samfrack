@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody>();
+        enemyRb = GetComponent<Rigidbody>();  
         soccerBall = GameObject.Find("Soccer Ball");
     }
 
@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour
     {
         enemyRb.AddForce((soccerBall.transform.position - transform.position).normalized * speed); 
 
-        //if (transform.position.y < -10)
-        //{
-           // Debug.Log(transform.position);
-           // Destroy(gameObject);
-       // }
+        if (transform.position.y < -10)
+        {
+            Debug.Log(transform.position);
+            Destroy(gameObject);
+        }
     }
 }
