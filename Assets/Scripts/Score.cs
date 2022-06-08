@@ -14,10 +14,6 @@ public class Score : MonoBehaviour
     private float playerHeight = -0.75f;
     public TextMeshProUGUI scoreText;
     private float ballSpawnRange = 20;
-    public SpawnManager spawnManager;
-    //public int waveNumber = 1;
-    //public int enemyCount;
-    //public GameObject enemyPrefab;
 
 
     // Start is called before the first frame update
@@ -47,11 +43,9 @@ public class Score : MonoBehaviour
     {
         score++;
         Destroy(gameObject);
-        Destroy(powerUpPrefab);
-        spawnManager.SpawnPowerup();
         Instantiate(ballPrefab, BallSpawnPosition(), ballPrefab.transform.rotation);
         player.transform.position = new Vector3(0, playerHeight, 36);
-        Debug.Log(score);
+        //Debug.Log(score);
         UpdateScore();
         
     }

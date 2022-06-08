@@ -8,37 +8,36 @@ public class UITimer : MonoBehaviour
 	public bool playing;
 	private float Timer;
 	public bool gameOver;
+	private int seconds;
+	private float endTime = 20.5f;
+	public GameManager gameManager; 
 	
 
 	void Start()
 	{
 		gameOver = false;
 	}
-	void Update()
+	public void Update()
 	{
-		Timer += Time.deltaTime;
-
-		int seconds = Mathf.FloorToInt(Timer % 60F);
-		int milliseconds = Mathf.FloorToInt((Timer * 100F) % 100F);
-		if (seconds == 15)
-		{
-			gameOver = true;
-			
-			Timer = 15f;
-			Debug.Log("Game Over");
-		}
-		else if (gameOver == false)
+		if(gameManager.isGameActive)
         {
-			TimerText.text = seconds.ToString("00") + ":" + milliseconds.ToString("00");
-		}
-		
-		void TimerRoutine()
-        {
-
-
+			TimerRoutine();
         }
 	}
 
-	
+	void TimerRoutine()
+    {
+		Timer += Time.deltaTime;
 
+		seconds = Mathf.FloorToInt(Timer % 60F);
+
+		if (seconds >= endTime)
+		{
+			gameOver = true;
+		}
+		else if (gameOver == false)
+		{
+			TimerText.text = "Time: " + seconds.ToString("00");
+		}
+	}
 }
